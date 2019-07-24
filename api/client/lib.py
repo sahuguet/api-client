@@ -132,6 +132,10 @@ def get_data(url, headers, params=None, logger=None):
     data : list or dict
 
     """
+    
+    # We want the server to send us compressed data.
+    headers['Accept-Encoding'] = 'gzip, deflate'
+    
     base_log_record = dict(route=url, params=params)
     retry_count = 0
     if not logger:
